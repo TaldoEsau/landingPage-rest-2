@@ -28,6 +28,7 @@ export const nav = [
   { label: "Pratos", href: "#pratos" },
   { label: "Drinks", href: "#drinks" },
   { label: "Ambiente", href: "#ambiente" },
+  { label: "Avaliações", href: "#avaliacoes" },
   { label: "Cardápio", href: "#cardapio" },
   { label: "Reserva", href: "#reserva" },
 ] as const;

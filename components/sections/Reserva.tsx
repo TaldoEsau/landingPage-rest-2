@@ -183,7 +183,7 @@ export function Reserva() {
                     </dd>
                   </div>
 
-                  <div className="grid grid-cols-2 gap-4">
+                  <div className="flex flex-col gap-6 ">
                     <div>
                       <dt className="text-xs font-semibold uppercase tracking-widest text-primary">
                         Telefone
