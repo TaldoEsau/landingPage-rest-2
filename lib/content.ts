@@ -19,7 +19,7 @@ export const site = {
   },
   horario: "Terça a Sábado · 19h às 23h30 | Almoço Sex e Sáb · 12h às 15h",
   reservasUrl: "#reserva",
-  instagram: "https://www.instagram.com/eduardacozinha",
+  instagram: "https://www.instagram.com/eduarda_cozinha",
   anuncio: "Reservas abertas para os finais de semana. Experimente o nosso Menu Degustação Harmonizado.",
 } as const;
 
