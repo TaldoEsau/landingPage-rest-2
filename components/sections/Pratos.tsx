@@ -46,7 +46,6 @@ export function Pratos() {
 
                   <div className="mt-6 border-t border-line/50 pt-4 flex items-center justify-between text-xs text-primary font-medium">
                     <span>Experimente com vinho harmonizado</span>
-                    <span aria-hidden>→</span>
                   </div>
                 </div>
               </div>
