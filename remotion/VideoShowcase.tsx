@@ -16,8 +16,7 @@ export type VideoShowcaseProps = {
 
 /**
  * Composição Remotion para o vídeo de ambiente do restaurante.
- * Utiliza o componente <Video> nativo do Remotion para garantir decodificação 100% compatível
- * com todos os navegadores sem erros de PIPELINE_ERROR_DECODE do WebCodecs.
+ * Executa em loop contínuo e infinito sem interrupções.
  */
 export const VideoShowcase: React.FC<VideoShowcaseProps> = ({
   videoSrc = "/images/video-ambiente.mp4",
@@ -43,10 +42,11 @@ export const VideoShowcase: React.FC<VideoShowcaseProps> = ({
 
   return (
     <AbsoluteFill style={{ backgroundColor: "#041402", overflow: "hidden" }}>
-      {/* Vídeo principal via <Video> do Remotion (Mudo e compatível com navegador) */}
+      {/* Vídeo principal via <Video> do Remotion com loop={true} */}
       <AbsoluteFill>
         <Video
           src={staticFile(videoSrc)}
+          loop={true}
           muted={true}
           volume={0}
           style={{

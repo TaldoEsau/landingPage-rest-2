@@ -34,14 +34,14 @@ export function Ambiente() {
 
         <Reveal className="mt-16">
           <div className="relative aspect-[16/9] w-full overflow-hidden rounded-3xl border border-line shadow-glow bg-[#041402]">
-            {/* Fallback de vídeo nativo mudo */}
+            {/* Fallback de vídeo nativo em loop contínuo e mudo */}
             <video
               src="/images/video-ambiente.mp4"
               muted={true}
               autoPlay
-              loop
+              loop={true}
               playsInline
-              className="absolute inset-0 h-full w-full object-cover opacity-80"
+              className="absolute inset-0 h-full w-full object-cover opacity-90"
             />
 
             {enabled && (
@@ -56,8 +56,8 @@ export function Ambiente() {
                 fps={30}
                 compositionWidth={1920}
                 compositionHeight={1080}
-                loop
-                autoPlay
+                loop={true}
+                autoPlay={true}
                 controls={false}
                 clickToPlay={false}
                 doubleClickToFullscreen={false}
