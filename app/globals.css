@@ -1,26 +1,133 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@theme {
+  --color-primary: #083204;
+  --color-secondary: #592000;
+  --color-surface: #FDF5F0;
+  --color-surface2: #FCE8D7;
+  --color-detail: #D8DFB3;
+  --color-text: #1C241B;
+  --color-muted: #5C665A;
+  --color-line: #DFE6DC;
+
+  --font-display: var(--font-display-src), Georgia, serif;
+  --font-body: var(--font-body-src), ui-sans-serif, system-ui, sans-serif;
+  --font-hand: var(--font-hand-src), Georgia, serif;
+
+  --shadow-gold: 0 10px 30px -10px rgba(8, 50, 4, 0.15);
+  --shadow-glow: 0 0 40px -10px rgba(8, 50, 4, 0.25);
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+@layer base {
+  html {
+    color-scheme: light;
+    scroll-behavior: smooth;
+    scroll-padding-top: 5rem;
+  }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+  body {
+    background-color: var(--color-surface);
+    color: var(--color-text);
+    font-family: var(--font-body);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  ::selection {
+    background: var(--color-primary);
+    color: var(--color-surface);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 3px;
+    border-radius: 4px;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+/* ── Hero motion poster (instant paint behind lazy Remotion Player) ── */
+.hero-poster {
+  background:
+    radial-gradient(
+      60% 60% at 30% 40%,
+      color-mix(in oklab, var(--color-primary) 25%, transparent) 0%,
+      transparent 70%
+    ),
+    radial-gradient(
+      60% 60% at 70% 60%,
+      color-mix(in oklab, var(--color-secondary) 25%, transparent) 0%,
+      transparent 70%
+    ),
+    var(--color-surface);
+  filter: blur(20px);
+}
+
+.hero-player {
+  animation: heroFade 900ms ease-out both;
+}
+
+@keyframes heroFade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-player {
+    display: none;
+  }
+}
+
+/* ── Scroll reveal ── */
+.reveal {
+  opacity: 0;
+  transform: translateY(26px);
+  transition:
+    opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: opacity, transform;
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
+/* ── Menu dotted leader (nome ···· preço) ── */
+.leader {
+  display: flex;
+  align-items: baseline;
+  gap: 0.75rem;
+}
+.leader__line {
+  flex: 1 1 auto;
+  border-bottom: 1px dotted var(--color-line);
+  transform: translateY(-0.25rem);
+}
+
+/* Texture overlay */
+.grain::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.03;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
